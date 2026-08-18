@@ -781,13 +781,29 @@ const NVacComponents = {
   `,
 
   openTripModal: () => {
-    const modal = document.getElementById('trip-custom-modal');
-    if (modal) modal.classList.add('active');
+    let modal = document.getElementById('trip-custom-modal');
+    if (!modal) {
+      let container = document.getElementById('modal-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'modal-container';
+        document.body.appendChild(container);
+      }
+      container.innerHTML = NVacComponents.tripCustomizerModal();
+      modal = document.getElementById('trip-custom-modal');
+    }
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   },
 
   closeTripModal: () => {
     const modal = document.getElementById('trip-custom-modal');
-    if (modal) modal.classList.remove('active');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   },
 
   sendCustomTripToWhatsApp: () => {
