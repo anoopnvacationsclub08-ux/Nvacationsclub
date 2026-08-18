@@ -321,6 +321,12 @@
           .join('');
       }
 
+      /* ─── Customize Trip Modal Slot ─────────────────────── */
+      const modalContainer = document.getElementById('modal-container');
+      if (modalContainer) {
+        modalContainer.innerHTML = NVacComponents.tripCustomizerModal();
+      }
+
       /* ─── Lead Capture Form ─────────────────────────────── */
       const leadSubmit = document.getElementById('lead-submit');
       const leadPhone  = document.getElementById('lead-phone');
@@ -345,6 +351,9 @@
 
     })();
   </script>
+
+  <!-- Customize Trip Modal Container -->
+  <div id="modal-container"></div>
 
 </body>
 </html>

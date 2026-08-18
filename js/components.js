@@ -281,10 +281,10 @@ const NVacComponents = {
 
             <!-- Buttons Group -->
             <div class="hero-buttons">
-              <a href="#contact" class="btn btn-primary btn-xl hero-btn-primary" id="hero-plan-btn">
+              <button class="btn btn-primary btn-xl hero-btn-primary" id="hero-plan-btn" onclick="NVacComponents.openTripModal()">
                 ${NVacComponents.icon.plane(18)}
-                <span>PLAN MY TRIP</span>
-              </a>
+                <span>CUSTOMIZE MY TRIP 🛠️</span>
+              </button>
               <a href="${data.meta.whatsappLink}" class="btn btn-whatsapp btn-xl hero-btn-whatsapp" target="_blank" rel="noopener noreferrer" id="hero-wa-btn">
                 ${NVacComponents.icon.whatsapp(18)}
                 <span>WHATSAPP US</span>
@@ -697,7 +697,135 @@ const NVacComponents = {
       </button>
     </div>
   `,
+
+  /* ─── Customize My Trip Interactive Modal ─────────────────── */
+  tripCustomizerModal: () => `
+    <div class="trip-modal-overlay" id="trip-custom-modal" role="dialog" aria-modal="true" onclick="if(event.target === this) NVacComponents.closeTripModal()">
+      <div class="trip-modal-card">
+        <button class="trip-modal-close" onclick="NVacComponents.closeTripModal()" aria-label="Close modal">✕</button>
+        
+        <div class="trip-modal-header">
+          <span class="trip-modal-overline">✨ 100% TAILOR-MADE TRIPS</span>
+          <h2 class="trip-modal-title">Customize Your Dream Vacation 🛠️</h2>
+          <p class="trip-modal-subtitle">Select your preferences & get a personalized itinerary on WhatsApp!</p>
+        </div>
+
+        <form id="trip-custom-form" onsubmit="event.preventDefault(); NVacComponents.sendCustomTripToWhatsApp();">
+          <!-- Destination -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">📍 Where do you want to go?</label>
+            <div class="trip-select-pills" id="modal-dest-pills">
+              <span class="trip-pill selected" data-value="Maldives 🏝️">Maldives 🏝️</span>
+              <span class="trip-pill" data-value="Bali 🌺">Bali 🌺</span>
+              <span class="trip-pill" data-value="Kashmir 🏔️">Kashmir 🏔️</span>
+              <span class="trip-pill" data-value="Vietnam 🏮">Vietnam 🏮</span>
+              <span class="trip-pill" data-value="Sri Lanka 🇱🇰">Sri Lanka 🇱🇰</span>
+              <span class="trip-pill" data-value="Thailand 🐘">Thailand 🐘</span>
+              <span class="trip-pill" data-value="Other / Not Sure ✈️">Other ✈️</span>
+            </div>
+          </div>
+
+          <!-- Hotel Preference -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">🏨 Hotel / Stay Preference</label>
+            <div class="trip-select-pills" id="modal-hotel-pills">
+              <span class="trip-pill selected" data-value="5★ Luxury Resort">5★ Luxury Resort</span>
+              <span class="trip-pill" data-value="Overwater Villa 🏡">Overwater Villa 🏡</span>
+              <span class="trip-pill" data-value="4★ Premium Hotel">4★ Premium Hotel</span>
+              <span class="trip-pill" data-value="3★ Budget / Boutique Stay">3★ Budget Stay</span>
+            </div>
+          </div>
+
+          <!-- Trip Style -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">💖 Trip Type</label>
+            <div class="trip-select-pills" id="modal-type-pills">
+              <span class="trip-pill selected" data-value="Honeymoon 💖">Honeymoon 💖</span>
+              <span class="trip-pill" data-value="Family Trip 👨‍👩‍👧">Family 👨‍👩‍👧</span>
+              <span class="trip-pill" data-value="Friends / Group 🎉">Friends 🎉</span>
+              <span class="trip-pill" data-value="Solo Trip 🎒">Solo 🎒</span>
+            </div>
+          </div>
+
+          <!-- Budget Per Person -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">💰 Budget Per Person (Approx)</label>
+            <div class="trip-select-pills" id="modal-budget-pills">
+              <span class="trip-pill" data-value="₹25k - ₹45k">₹25k - ₹45k</span>
+              <span class="trip-pill selected" data-value="₹45k - ₹75k">₹45k - ₹75k</span>
+              <span class="trip-pill" data-value="₹75k - ₹1.2L">₹75k - ₹1.2L</span>
+              <span class="trip-pill" data-value="₹1.2L+ Luxury">₹1.2L+ Luxury</span>
+            </div>
+          </div>
+
+          <!-- Month & Name -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="trip-form-group">
+            <div>
+              <label class="trip-form-label">📅 Travel Month</label>
+              <input type="text" class="trip-input-text" id="modal-travel-month" placeholder="e.g. Oct / Next Month" required />
+            </div>
+            <div>
+              <label class="trip-form-label">👤 Your Name</label>
+              <input type="text" class="trip-input-text" id="modal-user-name" placeholder="Enter your name" required />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="trip-modal-submit">
+            ${NVacComponents.icon.whatsapp(20)}
+            <span>Get My Custom Itinerary on WhatsApp 💬</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  `,
+
+  openTripModal: () => {
+    const modal = document.getElementById('trip-custom-modal');
+    if (modal) modal.classList.add('active');
+  },
+
+  closeTripModal: () => {
+    const modal = document.getElementById('trip-custom-modal');
+    if (modal) modal.classList.remove('active');
+  },
+
+  sendCustomTripToWhatsApp: () => {
+    const dest   = document.querySelector('#modal-dest-pills .selected')?.dataset.value || 'Custom Destination';
+    const hotel  = document.querySelector('#modal-hotel-pills .selected')?.dataset.value || 'Preferred Hotel';
+    const type   = document.querySelector('#modal-type-pills .selected')?.dataset.value || 'Custom Trip';
+    const budget = document.querySelector('#modal-budget-pills .selected')?.dataset.value || 'Standard Budget';
+    const month  = document.getElementById('modal-travel-month')?.value.trim() || 'Flexible Month';
+    const name   = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
+
+    const text = `Hi NVacations! 👋 I want to customize my trip:
+
+📍 Destination: ${dest}
+🏨 Hotel Style: ${hotel}
+💖 Trip Type: ${type}
+💰 Budget / Person: ${budget}
+📅 Travel Month: ${month}
+👤 My Name: ${name}
+
+Please share a customized itinerary and best quote! ✈️`;
+
+    const url = `https://wa.me/918178180063?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    NVacComponents.closeTripModal();
+  },
 };
+
+/* ─── Global Pill Selection Handler ──────────────────────── */
+document.addEventListener('click', (e) => {
+  const pill = e.target.closest('.trip-pill');
+  if (pill) {
+    const parent = pill.parentElement;
+    if (parent && parent.classList.contains('trip-select-pills')) {
+      parent.querySelectorAll('.trip-pill').forEach(p => p.classList.remove('selected'));
+      pill.classList.add('selected');
+    }
+  }
+});
 
 /* ─── Export ────────────────────────────────────────────── */
 if (typeof module !== 'undefined' && module.exports) {
