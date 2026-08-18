@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO -->
+  <title>NVacations — Travel More. Worry Less.</title>
+  <meta name="description"
+        content="NVacations offers custom travel packages to Maldives, Bali, Kashmir, Thailand, Vietnam, Sri Lanka and beyond. Plan your dream trip with India's most trusted travel brand." />
+  <meta name="keywords"
+        content="travel agency, Maldives packages, Bali tour, Kashmir trip, Thailand packages, NVacations, travel deals India" />
+  <meta name="author" content="NVacations" />
+  <meta name="theme-color" content="#062743" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="NVacations — Travel More. Worry Less." />
+  <meta property="og:description" content="Custom travel packages to the world's most beautiful destinations." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:image"       content="images/hero_maldives.jpg" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>" />
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR (rendered by JS)
+       ═══════════════════════════════════════════════════════ -->
+  <div id="navbar-slot"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN PAGE WRAPPER
+       ═══════════════════════════════════════════════════════ -->
+  <main class="page-wrap" id="main-content">
+
+    <!-- ─── HERO SECTION ─────────────────────────────────── -->
+    <div id="hero-slot"></div>
+
+    <!-- ─── SEARCH & TRAVEL STYLES SECTION ───────────────── -->
+    <div id="search-styles-slot"></div>
+
+    <!-- ─── TOP DESTINATIONS SECTION ──────────────────── -->
+    <div id="top-destinations-slot"></div>
+
+
+    <!-- ④ Benefit Cards -->
+    <!-- ④ Benefit Cards Section (Why Travel with NVacations?) -->
+    <section class="section section-bg-navy" id="about" style="position:relative;overflow:hidden;">
+      <!-- Glowing Background Radial Gradient Accents -->
+      <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle, rgba(255,184,0,0.18) 0%, transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle, rgba(8,168,138,0.18) 0%, transparent 70%);pointer-events:none;"></div>
+
+      <div class="container">
+        <div class="section-header-center">
+          <span class="text-overline" style="color:var(--color-yellow);font-weight:var(--fw-black);">
+            ✨ THE NVACATIONS ADVANTAGE
+          </span>
+          <h2 class="text-section-title text-white">Why Travel with NVacations?</h2>
+          <p class="text-section-subtitle text-white-70" style="margin-top:6px;color:rgba(255,255,255,0.75);">
+            4 reasons why 1000+ travelers trust us for their dream getaways
+          </p>
+        </div>
+        <div class="benefits-funky-grid" id="benefits-grid" role="list" aria-label="Our benefits"></div>
+      </div>
+    </section>
+
+    <!-- ⑤ Travel Diaries Preview -->
+    <section class="section section-bg-offwhite" id="diaries">
+      <div class="container">
+        <div id="diaries-header"></div>
+        <div class="scroll-container" id="diaries-track" role="list"
+             aria-label="Travel diaries"></div>
+        <div id="diaries-dots-wrap" style="margin-top:var(--space-5);"></div>
+      </div>
+    </section>
+
+    <!-- ⑥ Offers Preview -->
+    <section class="section section-bg-navy" id="offers">
+      <div class="container">
+        <div id="offers-header"></div>
+        <div class="scroll-container" id="offers-track" role="list"
+             aria-label="Current offers"></div>
+        <div id="offers-dots-wrap" style="margin-top:var(--space-5);"></div>
+      </div>
+    </section>
+
+    <!-- ⑦ Testimonials Section (Premium Dark Funky Design) -->
+    <section class="section testimonials-section-premium" id="testimonials" style="position:relative;overflow:hidden;">
+      <!-- Animated floating background orbs -->
+      <div class="testimonials-bg-orb testimonials-bg-orb-1"></div>
+      <div class="testimonials-bg-orb testimonials-bg-orb-2"></div>
+      <div class="testimonials-bg-orb testimonials-bg-orb-3"></div>
+
+      <div class="container" style="position:relative;z-index:2;">
+        <!-- Header with trust stats -->
+        <div class="section-header-center">
+          <span class="text-overline" style="color:var(--color-yellow);font-weight:var(--fw-black);letter-spacing:0.12em;">
+            💖 REAL TRAVEL EXPERIENCES
+          </span>
+          <h2 class="text-section-title text-white" style="font-size:clamp(1.8rem,4vw,2.6rem);">
+            Loved by Travelers ❤️
+          </h2>
+          <p class="text-section-subtitle" style="color:rgba(255,255,255,0.65);max-width:520px;margin:8px auto 0;">
+            Real travel stories & post-trip reviews from happy NVacations travelers
+          </p>
+        </div>
+
+        <!-- Trust Stats Bar -->
+        <div class="testimonials-trust-bar">
+          <div class="trust-stat-item">
+            <span class="trust-stat-number">1000+</span>
+            <span class="trust-stat-label">Happy Travelers</span>
+          </div>
+          <div class="trust-stat-divider"></div>
+          <div class="trust-stat-item">
+            <span class="trust-stat-number">4.9★</span>
+            <span class="trust-stat-label">Avg Rating</span>
+          </div>
+          <div class="trust-stat-divider"></div>
+          <div class="trust-stat-item">
+            <span class="trust-stat-number">98%</span>
+            <span class="trust-stat-label">Would Re-book</span>
+          </div>
+        </div>
+
+        <!-- Desktop Grid -->
+        <div class="testimonials-premium-grid hide-mobile" id="testimonials-grid" role="list"
+             aria-label="Traveler testimonials"></div>
+        <!-- Mobile Carousel -->
+        <div class="scroll-container show-mobile" id="testimonials-track-mobile" role="list"
+             aria-label="Testimonials carousel"></div>
+        <div class="carousel-dots show-mobile" id="testimonials-dots-mobile"
+             style="margin-top:var(--space-5);"></div>
+      </div>
+    </section>
+
+    <!-- ⑧ Stats Section -->
+    <section class="section section-bg-navy">
+      <div class="container">
+        <div class="grid grid-4" id="stats-grid" role="list"
+             aria-label="Our achievements"></div>
+      </div>
+    </section>
+
+    <!-- ⑨ Lead Capture -->
+    <section class="section section-bg-offwhite" id="contact">
+      <div class="container-md" style="text-align:center;">
+        <span class="text-overline">Exclusive Deals</span>
+        <h2 class="text-section-title" style="margin:var(--space-3) 0 var(--space-4);">
+          Get Travel Deals<br>Before Everyone Else
+        </h2>
+        <p class="text-section-subtitle" style="margin-bottom:var(--space-8);">
+          Join 1000+ travelers getting weekly deals direct on WhatsApp.
+        </p>
+        <div style="max-width:480px;margin:0 auto;">
+          <div class="input-wrap input-icon-left" style="margin-bottom:var(--space-4);">
+            <span class="input-icon">📱</span>
+            <input type="tel"
+                   class="input-field"
+                   id="lead-phone"
+                   placeholder="Enter your WhatsApp number"
+                   aria-label="WhatsApp number for travel deals" />
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" id="lead-submit">
+            💬 Get My Deals
+          </button>
+          <p class="text-caption" style="margin-top:var(--space-3);">
+            We never spam. Unsubscribe anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer placeholder (will be styled in homepage build) -->
+  <footer style="background:var(--color-navy);color:var(--color-white);
+                 padding:var(--space-12) var(--space-6);text-align:center;">
+    <div style="font-family:var(--font-heading);font-size:var(--text-xl);
+                font-weight:var(--fw-black);color:var(--color-yellow);margin-bottom:8px;">
+      N<span style="color:white">VACATIONS</span>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:var(--text-sm);">
+      Travel More. Worry Less. — &copy; 2026 NVacations. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Mobile Bottom Bar slot -->
+  <div id="mobile-bar-slot"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS — load in dependency order
+       ═══════════════════════════════════════════════════════ -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Foundation Render Script (fills in all component slots) -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ─── Hero Section ───────────────────────────────────── */
+      const heroSlot = document.getElementById('hero-slot');
+      if (heroSlot) heroSlot.innerHTML = NVacComponents.hero(NVacData);
+
+      /* ─── Search & Travel Styles ─────────────────────────── */
+      const searchStylesSlot = document.getElementById('search-styles-slot');
+      if (searchStylesSlot) searchStylesSlot.innerHTML = NVacComponents.searchAndStyles(NVacData);
+
+      /* ─── Top Destinations Section ──────────────────────── */
+      const topDestSlot = document.getElementById('top-destinations-slot');
+      if (topDestSlot) topDestSlot.innerHTML = NVacComponents.topDestinations(NVacData);
+
+
+
+      /* ─── Benefits ──────────────────────────────────────── */
+      const benefitsGrid = document.getElementById('benefits-grid');
+      if (benefitsGrid) {
+        benefitsGrid.innerHTML = NVacData.benefits
+          .map((b, i) => NVacComponents.benefitCard(b, i))
+          .join('');
+      }
+
+      /* ─── Travel Diaries ────────────────────────────────── */
+      const diariesHeader = document.getElementById('diaries-header');
+      if (diariesHeader) {
+        diariesHeader.innerHTML = NVacComponents.sectionHeader({
+          overline: 'Real Stories',
+          title: 'Travel Diaries 🎥',
+          viewAllHref: '#diaries',
+          viewAllLabel: 'Diaries',
+        });
+      }
+
+      const diariesTrack = document.getElementById('diaries-track');
+      if (diariesTrack) {
+        diariesTrack.innerHTML = NVacData.diaries
+          .map(d => {
+            const card = NVacComponents.diaryCard(d);
+            return `<div style="width:clamp(160px,38vw,220px);flex-shrink:0;">${card}</div>`;
+          }).join('');
+      }
+
+      const diariesDotsWrap = document.getElementById('diaries-dots-wrap');
+      if (diariesDotsWrap) {
+        diariesDotsWrap.innerHTML = NVacComponents.carouselDots(NVacData.diaries.length, 0, 'diaries');
+      }
+
+      /* ─── Offers ────────────────────────────────────────── */
+      const offersHeader = document.getElementById('offers-header');
+      if (offersHeader) {
+        offersHeader.innerHTML = NVacComponents.sectionHeader({
+          overline: 'Limited Time',
+          title: '🔥 Hot Offers',
+          viewAllHref: '#offers',
+          viewAllLabel: 'Offers',
+        });
+        // Make header text white for dark section
+        offersHeader.querySelectorAll('.text-section-title, .section-view-all')
+          .forEach(el => el.style.color = 'white');
+        offersHeader.querySelectorAll('.text-overline')
+          .forEach(el => el.style.color = 'rgba(255,184,0,0.9)');
+      }
+
+      const offersTrack = document.getElementById('offers-track');
+      if (offersTrack) {
+        offersTrack.innerHTML = NVacData.offers
+          .map(o => {
+            const card = NVacComponents.offerCard(o);
+            return `<div style="width:clamp(260px,75vw,320px);flex-shrink:0;">${card}</div>`;
+          }).join('');
+      }
+
+      const offersDotsWrap = document.getElementById('offers-dots-wrap');
+      if (offersDotsWrap) {
+        offersDotsWrap.innerHTML = NVacComponents.carouselDots(NVacData.offers.length, 0, 'offers');
+      }
+
+      /* ─── Testimonials ──────────────────────────────────── */
+      const testimonialsGrid = document.getElementById('testimonials-grid');
+      if (testimonialsGrid) {
+        testimonialsGrid.innerHTML = NVacData.testimonials
+          .slice(0, 3)
+          .map(t => NVacComponents.testimonialCard(t))
+          .join('');
+      }
+
+      const testimonialsMobile = document.getElementById('testimonials-track-mobile');
+      if (testimonialsMobile) {
+        testimonialsMobile.innerHTML = NVacData.testimonials
+          .map(t => {
+            const card = NVacComponents.testimonialCard(t);
+            return `<div style="width:80vw;max-width:320px;flex-shrink:0;">${card}</div>`;
+          }).join('');
+      }
+
+      const testimonialsDotsMobile = document.getElementById('testimonials-dots-mobile');
+      if (testimonialsDotsMobile) {
+        testimonialsDotsMobile.innerHTML = NVacData.testimonials
+          .map((_, i) =>
+            `<button class="carousel-dot${i === 0 ? ' active' : ''}" aria-label="Review ${i + 1}"></button>`
+          ).join('');
+      }
+
+      /* ─── Stats ─────────────────────────────────────────── */
+      const statsGrid = document.getElementById('stats-grid');
+      if (statsGrid) {
+        statsGrid.innerHTML = NVacData.stats
+          .map(s => NVacComponents.statItem(s))
+          .join('');
+      }
+
+      /* ─── Lead Capture Form ─────────────────────────────── */
+      const leadSubmit = document.getElementById('lead-submit');
+      const leadPhone  = document.getElementById('lead-phone');
+
+      leadSubmit?.addEventListener('click', () => {
+        const phone = leadPhone?.value.trim();
+        if (!phone || phone.length < 10) {
+          leadPhone?.focus();
+          leadPhone?.setAttribute('aria-invalid', 'true');
+          leadPhone.style.borderColor = 'var(--color-coral)';
+          setTimeout(() => {
+            leadPhone.style.borderColor = '';
+            leadPhone?.removeAttribute('aria-invalid');
+          }, 2000);
+          return;
+        }
+        const url = `https://wa.me/918178180063?text=${encodeURIComponent(
+          `Hi NVacations! I'd like to receive travel deals on WhatsApp. My number is ${phone}.`
+        )}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

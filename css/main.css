@@ -1,0 +1,53 @@
+/* ============================================================
+   NVacations — Main CSS Entry Point
+   main.css
+   Imports all modules in correct cascade order
+   ============================================================ */
+
+/* 1. Design Tokens */
+@import url('./variables.css');
+
+/* 2. Reset */
+@import url('./reset.css');
+
+/* 3. Typography */
+@import url('./typography.css');
+
+/* 4. Layout */
+@import url('./layout.css');
+
+/* 5. Components */
+@import url('./components.css');
+
+/* 6. Navbar */
+@import url('./navbar.css');
+
+/* 7. Hero Section */
+@import url('./hero.css');
+
+/* 8. Search & Travel Styles */
+@import url('./search-styles.css');
+
+/* ─── Page-Level Structural Styles ──────────────────────────── */
+
+/* Push page content below the fixed navbar */
+.page-wrap {
+  padding-top: var(--navbar-h-desktop);
+}
+
+@media (max-width: 900px) {
+  .page-wrap {
+    padding-top: var(--navbar-h-mobile);
+  }
+}
+
+/* ─── Smooth Reveal on Page Load ────────────────────────────── */
+body {
+  animation: fadeIn var(--duration-slow) var(--ease-out);
+}
+
+/* ─── Focus Ring Override for Branded Feel ──────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 3px;
+}

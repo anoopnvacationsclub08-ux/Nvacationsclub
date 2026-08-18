@@ -1,0 +1,183 @@
+/* ============================================================
+   NVacations — Design System Tokens
+   variables.css
+   ============================================================ */
+
+:root {
+
+  /* ─── Brand Colors ──────────────────────────────────────── */
+  --color-navy:        #062743;
+  --color-navy-deep:   #041d31;
+  --color-navy-light:  #0d3d62;
+  --color-yellow:      #FFB800;
+  --color-yellow-dark: #e6a600;
+  --color-yellow-light:#FFD166;
+  --color-teal:        #08A88A;
+  --color-teal-dark:   #067a65;
+  --color-teal-light:  #0dc9a5;
+  --color-coral:       #F45B69;
+  --color-coral-dark:  #d94455;
+  --color-coral-light: #f87d88;
+  --color-offwhite:    #F7F3EA;
+  --color-offwhite-2:  #EEE9DC;
+  --color-white:       #FFFFFF;
+  --color-dark:        #142033;
+  --color-dark-muted:  #2d3f56;
+  --color-muted:       #6b7a90;
+  --color-muted-light: #a0aec0;
+  --color-border:      #e2ddd4;
+  --color-border-light:#ede9e0;
+
+  /* ─── Semantic Colors ───────────────────────────────────── */
+  --color-bg-body:     var(--color-offwhite);
+  --color-bg-card:     var(--color-white);
+  --color-bg-dark:     var(--color-navy);
+  --color-text-primary:var(--color-dark);
+  --color-text-muted:  var(--color-muted);
+  --color-accent:      var(--color-yellow);
+  --color-cta:         var(--color-coral);
+
+  /* ─── Typography — Font Families ───────────────────────── */
+  --font-display:    'Playfair Display', Georgia, serif;
+  --font-heading:    'Outfit', system-ui, sans-serif;
+  --font-body:       'Inter', system-ui, sans-serif;
+  --font-script:     'Caveat', cursive;
+  --font-mono:       'JetBrains Mono', monospace;
+
+  /* ─── Font Sizes — Fluid Type Scale ────────────────────── */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  1.875rem;   /* 30px */
+  --text-3xl:  2.25rem;    /* 36px */
+  --text-4xl:  3rem;       /* 48px */
+  --text-5xl:  3.75rem;    /* 60px */
+  --text-6xl:  4.5rem;     /* 72px */
+  --text-7xl:  5.5rem;     /* 88px */
+  --text-hero: clamp(3rem, 8vw, 6rem);
+
+  /* ─── Font Weights ──────────────────────────────────────── */
+  --fw-light:     300;
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+  --fw-extrabold: 800;
+  --fw-black:     900;
+
+  /* ─── Line Heights ──────────────────────────────────────── */
+  --lh-tight:  1.1;
+  --lh-snug:   1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed:1.625;
+  --lh-loose:  2;
+
+  /* ─── Letter Spacing ────────────────────────────────────── */
+  --ls-tight: -0.025em;
+  --ls-normal: 0;
+  --ls-wide:   0.05em;
+  --ls-wider:  0.1em;
+  --ls-widest: 0.2em;
+
+  /* ─── Spacing Scale ─────────────────────────────────────── */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4px */
+  --space-2:   0.5rem;    /* 8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-7:   1.75rem;   /* 28px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* ─── Border Radius ─────────────────────────────────────── */
+  --radius-sm:   0.375rem;  /* 6px */
+  --radius-md:   0.75rem;   /* 12px */
+  --radius-lg:   1rem;      /* 16px */
+  --radius-xl:   1.5rem;    /* 24px */
+  --radius-2xl:  2rem;      /* 32px */
+  --radius-3xl:  2.5rem;    /* 40px */
+  --radius-full: 9999px;
+
+  /* ─── Shadows ───────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(6, 39, 67, 0.04);
+  --shadow-sm:  0 2px 8px rgba(6, 39, 67, 0.06);
+  --shadow-md:  0 4px 16px rgba(6, 39, 67, 0.1);
+  --shadow-lg:  0 8px 32px rgba(6, 39, 67, 0.14);
+  --shadow-xl:  0 16px 48px rgba(6, 39, 67, 0.18);
+  --shadow-2xl: 0 24px 64px rgba(6, 39, 67, 0.22);
+  --shadow-card:0 4px 24px rgba(6, 39, 67, 0.08);
+  --shadow-card-hover: 0 12px 40px rgba(6, 39, 67, 0.16);
+  --shadow-yellow: 0 8px 24px rgba(255, 184, 0, 0.35);
+  --shadow-teal:   0 8px 24px rgba(8, 168, 138, 0.35);
+  --shadow-coral:  0 8px 24px rgba(244, 91, 105, 0.35);
+
+  /* ─── Layout & Containers ───────────────────────────────── */
+  --container-xs:    480px;
+  --container-sm:    640px;
+  --container-md:    768px;
+  --container-lg:    1024px;
+  --container-xl:    1280px;
+  --container-2xl:   1440px;
+  --container-pad:   clamp(1rem, 4vw, 2rem);
+
+  /* ─── Z-Index Scale ─────────────────────────────────────── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-max:     9999;
+
+  /* ─── Transitions ───────────────────────────────────────── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 600ms;
+
+  --transition-base:   all var(--duration-base) var(--ease-default);
+  --transition-fast:   all var(--duration-fast) var(--ease-default);
+  --transition-slow:   all var(--duration-slow) var(--ease-default);
+  --transition-spring: all var(--duration-slow) var(--ease-spring);
+
+  /* ─── Navbar ─────────────────────────────────────────────── */
+  --navbar-h-desktop: 76px;
+  --navbar-h-mobile:  64px;
+
+  /* ─── Section Spacing ────────────────────────────────────── */
+  --section-py: clamp(3rem, 6vw, 5rem);
+
+  /* ─── Image Aspect Ratios ────────────────────────────────── */
+  --ratio-hero:        56.25%; /* 16:9 */
+  --ratio-card:        125%;   /* 4:5  */
+  --ratio-thumb:       66.67%; /* 3:2  */
+  --ratio-square:      100%;   /* 1:1  */
+  --ratio-wide:        42.86%; /* 21:9 */
+}
+
+/* ─── Dark Mode (future-ready) ───────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-body:  #0a1929;
+    --color-bg-card:  #0d2137;
+    --color-text-primary: #f0ece4;
+  }
+}
