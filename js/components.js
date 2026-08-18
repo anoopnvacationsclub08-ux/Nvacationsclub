@@ -707,7 +707,7 @@ const NVacComponents = {
         <div class="trip-modal-header">
           <span class="trip-modal-overline">✨ 100% TAILOR-MADE TRIPS</span>
           <h2 class="trip-modal-title">Customize Your Dream Vacation 🛠️</h2>
-          <p class="trip-modal-subtitle">Select your preferences & get a personalized itinerary on WhatsApp!</p>
+          <p class="trip-modal-subtitle">Select your preferences or type custom choices & get itinerary on WhatsApp!</p>
         </div>
 
         <form id="trip-custom-form" onsubmit="event.preventDefault(); NVacComponents.sendCustomTripToWhatsApp();">
@@ -721,8 +721,9 @@ const NVacComponents = {
               <span class="trip-pill" data-value="Vietnam 🏮">Vietnam 🏮</span>
               <span class="trip-pill" data-value="Sri Lanka 🇱🇰">Sri Lanka 🇱🇰</span>
               <span class="trip-pill" data-value="Thailand 🐘">Thailand 🐘</span>
-              <span class="trip-pill" data-value="Other / Not Sure ✈️">Other ✈️</span>
+              <span class="trip-pill" data-value="Other">Other ✏️</span>
             </div>
+            <input type="text" class="trip-input-text" id="modal-dest-custom" placeholder="✍️ Type custom destination (e.g. Switzerland / Dubai)" style="display:none;margin-top:8px;" />
           </div>
 
           <!-- Hotel Preference -->
@@ -732,8 +733,10 @@ const NVacComponents = {
               <span class="trip-pill selected" data-value="5★ Luxury Resort">5★ Luxury Resort</span>
               <span class="trip-pill" data-value="Overwater Villa 🏡">Overwater Villa 🏡</span>
               <span class="trip-pill" data-value="4★ Premium Hotel">4★ Premium Hotel</span>
-              <span class="trip-pill" data-value="3★ Budget / Boutique Stay">3★ Budget Stay</span>
+              <span class="trip-pill" data-value="3★ Budget Stay">3★ Budget Stay</span>
+              <span class="trip-pill" data-value="Other">Other ✏️</span>
             </div>
+            <input type="text" class="trip-input-text" id="modal-hotel-custom" placeholder="✍️ Type custom stay (e.g. Treehouse / Heritage Haveli)" style="display:none;margin-top:8px;" />
           </div>
 
           <!-- Trip Style -->
@@ -744,7 +747,9 @@ const NVacComponents = {
               <span class="trip-pill" data-value="Family Trip 👨‍👩‍👧">Family 👨‍👩‍👧</span>
               <span class="trip-pill" data-value="Friends / Group 🎉">Friends 🎉</span>
               <span class="trip-pill" data-value="Solo Trip 🎒">Solo 🎒</span>
+              <span class="trip-pill" data-value="Other">Other ✏️</span>
             </div>
+            <input type="text" class="trip-input-text" id="modal-type-custom" placeholder="✍️ Type custom trip style (e.g. Workation / Anniversary)" style="display:none;margin-top:8px;" />
           </div>
 
           <!-- Budget Per Person -->
@@ -755,7 +760,9 @@ const NVacComponents = {
               <span class="trip-pill selected" data-value="₹45k - ₹75k">₹45k - ₹75k</span>
               <span class="trip-pill" data-value="₹75k - ₹1.2L">₹75k - ₹1.2L</span>
               <span class="trip-pill" data-value="₹1.2L+ Luxury">₹1.2L+ Luxury</span>
+              <span class="trip-pill" data-value="Other">Other ✏️</span>
             </div>
+            <input type="text" class="trip-input-text" id="modal-budget-custom" placeholder="✍️ Type custom budget (e.g. Under ₹20k / ₹2L+)" style="display:none;margin-top:8px;" />
           </div>
 
           <!-- Month & Name -->
@@ -807,19 +814,43 @@ const NVacComponents = {
   },
 
   sendCustomTripToWhatsApp: () => {
-    const dest   = document.querySelector('#modal-dest-pills .selected')?.dataset.value || 'Custom Destination';
-    const hotel  = document.querySelector('#modal-hotel-pills .selected')?.dataset.value || 'Preferred Hotel';
-    const type   = document.querySelector('#modal-type-pills .selected')?.dataset.value || 'Custom Trip';
-    const budget = document.querySelector('#modal-budget-pills .selected')?.dataset.value || 'Standard Budget';
-    const month  = document.getElementById('modal-travel-month')?.value.trim() || 'Flexible Month';
-    const name   = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
+    // Destination
+    let destPill = document.querySelector('#modal-dest-pills .selected')?.dataset.value || 'Custom Destination';
+    if (destPill === 'Other') {
+      const customVal = document.getElementById('modal-dest-custom')?.value.trim();
+      destPill = customVal ? `Custom (${customVal})` : 'Custom Destination';
+    }
+
+    // Hotel
+    let hotelPill = document.querySelector('#modal-hotel-pills .selected')?.dataset.value || 'Preferred Hotel';
+    if (hotelPill === 'Other') {
+      const customVal = document.getElementById('modal-hotel-custom')?.value.trim();
+      hotelPill = customVal ? `Custom (${customVal})` : 'Custom Stay';
+    }
+
+    // Type
+    let typePill = document.querySelector('#modal-type-pills .selected')?.dataset.value || 'Custom Trip';
+    if (typePill === 'Other') {
+      const customVal = document.getElementById('modal-type-custom')?.value.trim();
+      typePill = customVal ? `Custom (${customVal})` : 'Custom Style';
+    }
+
+    // Budget
+    let budgetPill = document.querySelector('#modal-budget-pills .selected')?.dataset.value || 'Standard Budget';
+    if (budgetPill === 'Other') {
+      const customVal = document.getElementById('modal-budget-custom')?.value.trim();
+      budgetPill = customVal ? `Custom (${customVal})` : 'Flexible Budget';
+    }
+
+    const month = document.getElementById('modal-travel-month')?.value.trim() || 'Flexible Month';
+    const name  = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
 
     const text = `Hi NVacations! 👋 I want to customize my trip:
 
-📍 Destination: ${dest}
-🏨 Hotel Style: ${hotel}
-💖 Trip Type: ${type}
-💰 Budget / Person: ${budget}
+📍 Destination: ${destPill}
+🏨 Hotel Style: ${hotelPill}
+💖 Trip Type: ${typePill}
+💰 Budget / Person: ${budgetPill}
 📅 Travel Month: ${month}
 👤 My Name: ${name}
 
@@ -831,7 +862,7 @@ Please share a customized itinerary and best quote! ✈️`;
   },
 };
 
-/* ─── Global Pill Selection Handler ──────────────────────── */
+/* ─── Global Pill Selection Handler & Other Custom Input Toggle ── */
 document.addEventListener('click', (e) => {
   const pill = e.target.closest('.trip-pill');
   if (pill) {
@@ -839,6 +870,18 @@ document.addEventListener('click', (e) => {
     if (parent && parent.classList.contains('trip-select-pills')) {
       parent.querySelectorAll('.trip-pill').forEach(p => p.classList.remove('selected'));
       pill.classList.add('selected');
+
+      // Toggle custom input field if Other is selected
+      const group = parent.parentElement;
+      const customInput = group?.querySelector('.trip-input-text');
+      if (customInput) {
+        if (pill.dataset.value === 'Other') {
+          customInput.style.display = 'block';
+          customInput.focus();
+        } else {
+          customInput.style.display = 'none';
+        }
+      }
     }
   }
 });
