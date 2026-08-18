@@ -1865,11 +1865,10 @@
 }
 
 @media (max-width: 767px) {
-  .mobile-bottom-bar { display: block; }
+  .mobile-bottom-bar { display: none !important; }
 
-  /* Compensate for fixed bottom bar */
   body {
-    padding-bottom: 80px;
+    padding-bottom: 0 !important;
   }
 }
 
