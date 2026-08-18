@@ -766,11 +766,12 @@ const NVacComponents = {
             <input type="text" class="trip-input-text" id="modal-budget-custom" placeholder="✍️ Type custom budget (e.g. Under ₹20k / ₹2L+)" style="display:none;margin-top:8px;" />
           </div>
 
-          <!-- Month & Name -->
+          <!-- Date & Name -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="trip-form-group">
             <div>
-              <label class="trip-form-label">📅 Travel Month</label>
-              <input type="text" class="trip-input-text" id="modal-travel-month" placeholder="e.g. Oct / Next Month" required />
+              <label class="trip-form-label">📅 Travel Date(s)</label>
+              <input type="date" class="trip-input-text" id="modal-travel-date" style="color-scheme: dark;" />
+              <input type="text" class="trip-input-text" id="modal-travel-date-text" placeholder="Or type e.g. 15-22 Oct / Next Month" style="margin-top:6px;font-size:12px;" />
             </div>
             <div>
               <label class="trip-form-label">👤 Your Name</label>
@@ -899,8 +900,18 @@ const NVacComponents = {
       budgetPill = customVal ? `Custom (${customVal})` : 'Flexible Budget';
     }
 
-    const month = document.getElementById('modal-travel-month')?.value.trim() || 'Flexible Month';
-    const name  = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
+    // Dates
+    const pickerDate = document.getElementById('modal-travel-date')?.value;
+    const textDate   = document.getElementById('modal-travel-date-text')?.value.trim();
+    let dateStr = 'Flexible Dates';
+    if (pickerDate) {
+      dateStr = pickerDate;
+      if (textDate) dateStr += ` (${textDate})`;
+    } else if (textDate) {
+      dateStr = textDate;
+    }
+
+    const name = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
 
     const text = `Hi NVacations! 👋 I want to customize my trip:
 
@@ -908,7 +919,7 @@ const NVacComponents = {
 🏨 Hotel Style: ${hotelPill}
 💖 Trip Type: ${typePill}
 💰 Budget / Person: ${budgetPill}
-📅 Travel Month: ${month}
+📅 Travel Date(s): ${dateStr}
 👤 My Name: ${name}
 
 Please share a customized itinerary and best quote! ✈️`;
