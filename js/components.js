@@ -722,9 +722,9 @@ const NVacComponents = {
               <span class="trip-pill" data-value="Vietnam 🏮">Vietnam 🏮</span>
               <span class="trip-pill" data-value="Sri Lanka 🇱🇰">Sri Lanka 🇱🇰</span>
               <span class="trip-pill" data-value="Thailand 🐘">Thailand 🐘</span>
-              <span class="trip-pill" data-value="Other">Other ✏️</span>
+              <span class="trip-pill" data-value="Your choice of Location">Your choice of Location ✏️</span>
             </div>
-            <input type="text" class="trip-input-text" id="modal-dest-custom" placeholder="✍️ Type custom destination (e.g. Switzerland / Dubai)" style="display:none;margin-top:8px;" />
+            <input type="text" class="trip-input-text" id="modal-dest-custom" placeholder="✍️ Type your location choice (e.g. Switzerland / Dubai / Goa)" style="display:none;margin-top:8px;" />
           </div>
 
           <!-- Hotel Preference -->
@@ -827,7 +827,7 @@ const NVacComponents = {
         });
 
         if (!matched && customInput) {
-          const otherPill = Array.from(destPills).find(p => p.dataset.value === 'Other');
+          const otherPill = Array.from(destPills).find(p => p.dataset.value === 'Other' || p.dataset.value.startsWith('Your choice'));
           if (otherPill) otherPill.classList.add('selected');
           customInput.style.display = 'block';
           customInput.value = query;
@@ -883,7 +883,7 @@ const NVacComponents = {
   sendCustomTripToWhatsApp: () => {
     // Destination
     let destPill = document.querySelector('#modal-dest-pills .selected')?.dataset.value || 'Custom Destination';
-    if (destPill === 'Other') {
+    if (destPill === 'Other' || destPill.startsWith('Your choice')) {
       const customVal = document.getElementById('modal-dest-custom')?.value.trim();
       destPill = customVal ? `Custom (${customVal})` : 'Custom Destination';
     }
@@ -960,7 +960,7 @@ document.addEventListener('click', (e) => {
       const group = parent.parentElement;
       const customInput = group?.querySelector('.trip-input-text');
       if (customInput) {
-        if (pill.dataset.value === 'Other') {
+        if (pill.dataset.value === 'Other' || pill.dataset.value.startsWith('Your choice')) {
           customInput.style.display = 'block';
           customInput.focus();
         } else {
