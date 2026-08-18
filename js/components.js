@@ -716,7 +716,7 @@ const NVacComponents = {
           <div class="trip-form-group">
             <label class="trip-form-label">📍 Where do you want to go?</label>
             <div class="trip-select-pills" id="modal-dest-pills">
-              <span class="trip-pill selected" data-value="Maldives 🏝️">Maldives 🏝️</span>
+              <span class="trip-pill selected" data-value="Manali 🏔️">Manali 🏔️</span>
               <span class="trip-pill" data-value="Bali 🌺">Bali 🌺</span>
               <span class="trip-pill" data-value="Kashmir 🏔️">Kashmir 🏔️</span>
               <span class="trip-pill" data-value="Vietnam 🏮">Vietnam 🏮</span>
