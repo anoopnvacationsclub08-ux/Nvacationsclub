@@ -406,7 +406,7 @@ const NVacComponents = {
   /* ─── Compact Premium Destination Card (4:5 Ratio) ────────── */
   destinationCard: (dest, isWishlisted = false) => `
     <article class="dest-card reveal" data-dest-id="${dest.id}" role="article"
-             onclick="window.location.hash='destinations'">
+             onclick="NVacComponents.openTripModal('${dest.name}')">
       <div class="card-image-wrap">
         <img
           src="${dest.image}"
@@ -442,16 +442,18 @@ const NVacComponents = {
       <!-- Content Overlay at Bottom -->
       <div class="dest-card-content">
         <h3 class="dest-card-name">${dest.name}</h3>
-        <div class="dest-card-price">
-          ${dest.priceLabel || 'Customizable from'} <strong>${dest.price}</strong>
-        </div>
+        <button class="btn btn-primary btn-sm"
+                onclick="event.stopPropagation(); NVacComponents.openTripModal('${dest.name}');"
+                style="margin-top:8px;width:100%;font-size:11px;padding:7px 12px;background:var(--color-yellow);color:var(--color-navy);border:none;border-radius:20px;font-weight:var(--fw-black);cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(255,184,0,0.3);">
+          CUSTOMIZE TRIP 🛠️
+        </button>
       </div>
     </article>
   `,
 
   /* ─── Horizontal Destination Card (Mobile) ──────────────── */
   destinationCardHorizontal: (dest, isWishlisted = false) => `
-    <article class="dest-card-horizontal reveal" data-dest-id="${dest.id}" role="article">
+    <article class="dest-card-horizontal reveal" data-dest-id="${dest.id}" role="article" onclick="NVacComponents.openTripModal('${dest.name}')">
       <!-- Image Left -->
       <div class="card-image-wrap">
         <img
@@ -476,21 +478,20 @@ const NVacComponents = {
             <button class="dest-card-wishlist${isWishlisted ? ' active' : ''}"
                     data-wishlist-id="${dest.id}"
                     aria-label="${isWishlisted ? 'Remove from' : 'Add to'} wishlist"
-                    aria-pressed="${isWishlisted}">
+                    aria-pressed="${isWishlisted}"
+                    onclick="event.stopPropagation();">
               ${NVacComponents.icon.heart(14, isWishlisted)}
             </button>
           </div>
           <div class="dest-card-country">${dest.country}</div>
         </div>
 
-        <div class="dest-card-footer-row">
-          <div class="dest-card-price">
-            ${dest.priceLabel || 'Customizable from'}
-            <strong>${dest.price}</strong>
-          </div>
-          <span class="dest-card-arrow">
-            ${NVacComponents.icon.chevronRight(14)}
-          </span>
+        <div class="dest-card-footer-row" style="margin-top:6px;">
+          <button class="btn btn-primary btn-sm"
+                  onclick="event.stopPropagation(); NVacComponents.openTripModal('${dest.name}');"
+                  style="font-size:10px;padding:5px 12px;background:var(--color-yellow);color:var(--color-navy);border:none;border-radius:14px;font-weight:var(--fw-black);cursor:pointer;letter-spacing:0.02em;">
+            CUSTOMIZE 🛠️
+          </button>
         </div>
       </div>
     </article>
