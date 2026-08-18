@@ -782,6 +782,38 @@ const NVacComponents = {
             <input type="text" class="trip-input-text" id="modal-travel-date-text" placeholder="Or type e.g. Flexible / Diwali Week / Next Month" style="margin-top:8px;font-size:12px;" />
           </div>
 
+          <!-- Travelers (Adults & Kids 0-12 Yrs) -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">👥 Number of Travelers</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div>
+                <span style="font-size:10px;color:rgba(255,255,255,0.6);display:block;margin-bottom:3px;">Adults (12+ yrs)</span>
+                <select class="trip-input-text" id="modal-adults-count" style="color-scheme: dark;">
+                  <option value="1 Adult">1 Adult</option>
+                  <option value="2 Adults" selected>2 Adults</option>
+                  <option value="3 Adults">3 Adults</option>
+                  <option value="4 Adults">4 Adults</option>
+                  <option value="5+ Group">5+ Group</option>
+                </select>
+              </div>
+              <div>
+                <span style="font-size:10px;color:rgba(255,255,255,0.6);display:block;margin-bottom:3px;">Kids (0-12 yrs)</span>
+                <select class="trip-input-text" id="modal-kids-count" style="color-scheme: dark;">
+                  <option value="0 Kids" selected>0 Kids</option>
+                  <option value="1 Kid (0-12 yrs)">1 Kid</option>
+                  <option value="2 Kids (0-12 yrs)">2 Kids</option>
+                  <option value="3+ Kids (0-12 yrs)">3+ Kids</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Note / Custom Requirements -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">📝 Special Note / Requirements (Optional)</label>
+            <textarea class="trip-input-text" id="modal-special-note" rows="2" placeholder="e.g. Need pure veg food, romantic pool villa, candlelight dinner, private cab..." style="resize:none;font-size:12px;"></textarea>
+          </div>
+
           <!-- Name -->
           <div class="trip-form-group">
             <label class="trip-form-label">👤 Your Name</label>
@@ -909,6 +941,12 @@ const NVacComponents = {
       budgetPill = customVal ? `Custom (${customVal})` : 'Flexible Budget';
     }
 
+    // Travelers
+    const adults = document.getElementById('modal-adults-count')?.value || '2 Adults';
+    const kids   = document.getElementById('modal-kids-count')?.value || '0 Kids';
+    let travelersStr = `${adults}`;
+    if (kids && kids !== '0 Kids') travelersStr += `, ${kids}`;
+
     // Dates (Start Date → End Date)
     const startDate = document.getElementById('modal-start-date')?.value;
     const endDate   = document.getElementById('modal-end-date')?.value;
@@ -928,18 +966,24 @@ const NVacComponents = {
       dateStr = textDate;
     }
 
+    const note = document.getElementById('modal-special-note')?.value.trim();
     const name = document.getElementById('modal-user-name')?.value.trim() || 'Traveler';
 
-    const text = `Hi NVacations! 👋 I want to customize my trip:
+    let text = `Hi NVacations! 👋 I want to customize my trip:
 
 📍 Destination: ${destPill}
 🏨 Hotel Style: ${hotelPill}
 💖 Trip Type: ${typePill}
+👥 Travelers: ${travelersStr}
 💰 Budget / Person: ${budgetPill}
 📅 Travel Dates: ${dateStr}
-👤 My Name: ${name}
+👤 My Name: ${name}`;
 
-Please share a customized itinerary and best quote! ✈️`;
+    if (note) {
+      text += `\n📝 Special Note: ${note}`;
+    }
+
+    text += `\n\nPlease share a customized itinerary and best quote! ✈️`;
 
     const url = `https://wa.me/918178180063?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
