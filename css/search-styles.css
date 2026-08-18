@@ -185,8 +185,8 @@
 
 @media (max-width: 767px) {
   .search-section {
-    margin-top: -24px;
-    margin-bottom: var(--space-4);
+    margin-top: 48px;
+    margin-bottom: var(--space-6);
   }
   .search-card {
     padding: var(--space-4);
