@@ -425,6 +425,11 @@ const NVacComponents = {
         ${dest.rating}
       </div>
 
+      <!-- 100% Customizable Badge -->
+      <div style="position:absolute;top:12px;left:70px;background:rgba(8,168,138,0.9);backdrop-filter:blur(6px);color:white;font-size:10px;font-weight:var(--fw-black);padding:3px 8px;border-radius:12px;letter-spacing:0.02em;z-index:3;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+        🎨 100% Custom
+      </div>
+
       <!-- Wishlist Heart Top-Right -->
       <button class="dest-card-wishlist${isWishlisted ? ' active' : ''}"
               data-wishlist-id="${dest.id}"
@@ -438,7 +443,7 @@ const NVacComponents = {
       <div class="dest-card-content">
         <h3 class="dest-card-name">${dest.name}</h3>
         <div class="dest-card-price">
-          ${dest.priceLabel || 'Starting at'} <strong>${dest.price}</strong>
+          ${dest.priceLabel || 'Customizable from'} <strong>${dest.price}</strong>
         </div>
       </div>
     </article>
@@ -480,7 +485,7 @@ const NVacComponents = {
 
         <div class="dest-card-footer-row">
           <div class="dest-card-price">
-            ${dest.priceLabel || 'Starting at'}
+            ${dest.priceLabel || 'Customizable from'}
             <strong>${dest.price}</strong>
           </div>
           <span class="dest-card-arrow">
