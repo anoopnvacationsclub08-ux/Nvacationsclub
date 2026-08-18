@@ -766,17 +766,26 @@ const NVacComponents = {
             <input type="text" class="trip-input-text" id="modal-budget-custom" placeholder="✍️ Type custom budget (e.g. Under ₹20k / ₹2L+)" style="display:none;margin-top:8px;" />
           </div>
 
-          <!-- Date & Name -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="trip-form-group">
-            <div>
-              <label class="trip-form-label">📅 Travel Date(s)</label>
-              <input type="date" class="trip-input-text" id="modal-travel-date" style="color-scheme: dark;" />
-              <input type="text" class="trip-input-text" id="modal-travel-date-text" placeholder="Or type e.g. 15-22 Oct / Next Month" style="margin-top:6px;font-size:12px;" />
+          <!-- Date Range & Name -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">📅 Travel Dates (Start Date → End Date)</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div>
+                <span style="font-size:10px;color:rgba(255,255,255,0.6);display:block;margin-bottom:3px;">Start Date</span>
+                <input type="date" class="trip-input-text" id="modal-start-date" style="color-scheme: dark;" />
+              </div>
+              <div>
+                <span style="font-size:10px;color:rgba(255,255,255,0.6);display:block;margin-bottom:3px;">End Date</span>
+                <input type="date" class="trip-input-text" id="modal-end-date" style="color-scheme: dark;" />
+              </div>
             </div>
-            <div>
-              <label class="trip-form-label">👤 Your Name</label>
-              <input type="text" class="trip-input-text" id="modal-user-name" placeholder="Enter your name" required />
-            </div>
+            <input type="text" class="trip-input-text" id="modal-travel-date-text" placeholder="Or type e.g. Flexible / Diwali Week / Next Month" style="margin-top:8px;font-size:12px;" />
+          </div>
+
+          <!-- Name -->
+          <div class="trip-form-group">
+            <label class="trip-form-label">👤 Your Name</label>
+            <input type="text" class="trip-input-text" id="modal-user-name" placeholder="Enter your full name" required />
           </div>
 
           <!-- Submit Button -->
@@ -900,12 +909,20 @@ const NVacComponents = {
       budgetPill = customVal ? `Custom (${customVal})` : 'Flexible Budget';
     }
 
-    // Dates
-    const pickerDate = document.getElementById('modal-travel-date')?.value;
-    const textDate   = document.getElementById('modal-travel-date-text')?.value.trim();
+    // Dates (Start Date → End Date)
+    const startDate = document.getElementById('modal-start-date')?.value;
+    const endDate   = document.getElementById('modal-end-date')?.value;
+    const textDate  = document.getElementById('modal-travel-date-text')?.value.trim();
+
     let dateStr = 'Flexible Dates';
-    if (pickerDate) {
-      dateStr = pickerDate;
+    if (startDate && endDate) {
+      dateStr = `${startDate} to ${endDate}`;
+      if (textDate) dateStr += ` (${textDate})`;
+    } else if (startDate) {
+      dateStr = `From ${startDate}`;
+      if (textDate) dateStr += ` (${textDate})`;
+    } else if (endDate) {
+      dateStr = `Until ${endDate}`;
       if (textDate) dateStr += ` (${textDate})`;
     } else if (textDate) {
       dateStr = textDate;
@@ -919,7 +936,7 @@ const NVacComponents = {
 🏨 Hotel Style: ${hotelPill}
 💖 Trip Type: ${typePill}
 💰 Budget / Person: ${budgetPill}
-📅 Travel Date(s): ${dateStr}
+📅 Travel Dates: ${dateStr}
 👤 My Name: ${name}
 
 Please share a customized itinerary and best quote! ✈️`;
