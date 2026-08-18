@@ -227,17 +227,7 @@ const NVacApp = {
     const doSearch = (query) => {
       if (!query.trim()) return;
       closeModal();
-      const dest = NVacData.destinations.find(d =>
-        d.name.toLowerCase().includes(query.toLowerCase()) ||
-        d.country.toLowerCase().includes(query.toLowerCase())
-      );
-      if (dest) {
-        NVacUtils.scrollTo('#destinations', 80);
-      } else {
-        // WhatsApp fallback
-        const url = NVacUtils.getLeadWhatsApp(query);
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
+      NVacComponents.openTripModal(query.trim());
     };
 
     const mainSearchInput = document.getElementById('main-search-input');
@@ -282,10 +272,8 @@ const NVacApp = {
       const style = NVacData.travelStyles.find(s => s.id === styleId);
       if (!style) return;
 
-      // Build WhatsApp query
       const label = style.label.replace('\n', ' ');
-      const url = NVacUtils.getLeadWhatsApp(label);
-      window.open(url, '_blank', 'noopener,noreferrer');
+      NVacComponents.openTripModal('', label);
     });
   },
 };

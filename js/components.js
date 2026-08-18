@@ -787,7 +787,7 @@ const NVacComponents = {
     </div>
   `,
 
-  openTripModal: () => {
+  openTripModal: (customDest = '', customStyle = '') => {
     let modal = document.getElementById('trip-custom-modal');
     if (!modal) {
       let container = document.getElementById('modal-container');
@@ -800,6 +800,52 @@ const NVacComponents = {
       modal = document.getElementById('trip-custom-modal');
     }
     if (modal) {
+      // If a destination was searched (e.g. "Dubai", "Maldives", "Goa")
+      if (customDest && customDest.trim()) {
+        const query = customDest.trim();
+        const destPills = modal.querySelectorAll('#modal-dest-pills .trip-pill');
+        const customInput = modal.querySelector('#modal-dest-custom');
+        let matched = false;
+
+        destPills.forEach(pill => {
+          pill.classList.remove('selected');
+          if (pill.dataset.value.toLowerCase().includes(query.toLowerCase())) {
+            pill.classList.add('selected');
+            matched = true;
+          }
+        });
+
+        if (!matched && customInput) {
+          const otherPill = Array.from(destPills).find(p => p.dataset.value === 'Other');
+          if (otherPill) otherPill.classList.add('selected');
+          customInput.style.display = 'block';
+          customInput.value = query;
+        } else if (customInput) {
+          customInput.style.display = 'none';
+        }
+
+        const modalTitle = modal.querySelector('.trip-modal-title');
+        if (modalTitle) {
+          modalTitle.innerHTML = `Customize Your ${query} Trip 🛠️`;
+        }
+      } else {
+        const modalTitle = modal.querySelector('.trip-modal-title');
+        if (modalTitle) {
+          modalTitle.innerHTML = `Customize Your Dream Vacation 🛠️`;
+        }
+      }
+
+      // If a travel style was clicked (e.g. "Honeymoon", "Family")
+      if (customStyle && customStyle.trim()) {
+        const typePills = modal.querySelectorAll('#modal-type-pills .trip-pill');
+        typePills.forEach(pill => {
+          pill.classList.remove('selected');
+          if (pill.dataset.value.toLowerCase().includes(customStyle.toLowerCase())) {
+            pill.classList.add('selected');
+          }
+        });
+      }
+
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
