@@ -160,11 +160,11 @@ const NVacComponents = {
               <span>${data.meta.phone}</span>
             </a>
 
-            <!-- Plan My Trip Button (Desktop) -->
-            <a href="#contact" class="btn btn-primary btn-sm hide-mobile" id="nav-plan-btn">
+            <!-- Customize Trip Button (Desktop) -->
+            <button class="btn btn-primary btn-sm hide-mobile" id="nav-plan-btn" onclick="NVacComponents.openTripModal()">
               ${NVacComponents.icon.plane(14)}
-              PLAN MY TRIP
-            </a>
+              CUSTOMIZE TRIP 🛠️
+            </button>
 
             <!-- Mobile Search Icon Button -->
             <button class="navbar-search-btn" id="navbar-search-toggle"
@@ -227,9 +227,9 @@ const NVacComponents = {
             ${NVacComponents.icon.phone(18)}
             <span>Call Us: ${data.meta.phone}</span>
           </a>
-          <a href="#contact" class="btn btn-primary btn-block" id="mobile-nav-plan-btn">
-            ${NVacComponents.icon.plane(16)} PLAN MY TRIP
-          </a>
+          <button class="btn btn-primary btn-block" id="mobile-nav-plan-btn" onclick="NVacComponents.closeMobileNav(); NVacComponents.openTripModal();">
+            ${NVacComponents.icon.plane(16)} CUSTOMIZE MY TRIP 🛠️
+          </button>
           <a href="${data.meta.whatsappLink}" class="btn btn-whatsapp btn-block" target="_blank"
              rel="noopener noreferrer">
             ${NVacComponents.icon.whatsapp(16)} WHATSAPP US
@@ -641,11 +641,11 @@ const NVacComponents = {
           <span style="font-size:1.3rem;">📞</span>
           <span>CALL US</span>
         </a>
-        <a href="#contact" class="mobile-bottom-action primary"
-           aria-label="Plan my trip">
-          <span style="font-size:1.3rem;">✈️</span>
-          <span style="font-size:9px;">PLAN TRIP</span>
-        </a>
+        <button class="mobile-bottom-action primary" onclick="NVacComponents.openTripModal();"
+           aria-label="Customize my trip">
+          <span style="font-size:1.3rem;">🛠️</span>
+          <span style="font-size:9px;">CUSTOMIZE</span>
+        </button>
         <a href="${data.meta.whatsappLink}" class="mobile-bottom-action"
            target="_blank" rel="noopener noreferrer"
            aria-label="WhatsApp us">
@@ -803,6 +803,16 @@ const NVacComponents = {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+  },
+
+  closeMobileNav: () => {
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const overlay   = document.getElementById('nav-overlay');
+    hamburger?.classList.remove('open');
+    mobileNav?.classList.remove('open');
+    overlay?.classList.remove('active');
+    document.body.style.overflow = '';
   },
 
   closeTripModal: () => {
